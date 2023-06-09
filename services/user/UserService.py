@@ -18,7 +18,7 @@ class UserService(BaseServiceClass):
 
     @staticmethod
     def update_by_id(id_: int, new_name: str | None, new_number: str | None):
-        handle_session_error(UserAPI.read_by_id, id_=id_, new_name=new_name, new_number=new_number)
+        handle_session_error(UserAPI.update_by_id, id_=id_, new_name=new_name, new_number=new_number)
 
     @staticmethod
     def delete_by_id(id_: int):

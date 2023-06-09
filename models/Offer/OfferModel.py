@@ -12,15 +12,15 @@ class Offer(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
 
     creator_id: Mapped[int] = mapped_column(ForeignKey(f'{User.__tablename__}.{User.id.key}'))
-    creator: Mapped[User] = relationship(User)
+    creator: Mapped[User] = relationship(User, foreign_keys=[creator_id])
 
     partner_id: Mapped[int] = mapped_column(ForeignKey(f'{User.__tablename__}.{User.id.key}'))
-    partner: Mapped[User] = relationship(User)
+    partner: Mapped[User] = relationship(User, foreign_keys=[partner_id])
 
     give_product_id: Mapped[int] = mapped_column(ForeignKey(f'{Product.__tablename__}.{Product.id.key}'))
-    give_product: Mapped[Product] = relationship()
+    give_product: Mapped[Product] = relationship(foreign_keys=[give_product_id])
 
     take_product_id: Mapped[int] = mapped_column(ForeignKey(f'{Product.__tablename__}.{Product.id.key}'))
-    take_product: Mapped[Product] = relationship()
+    take_product: Mapped[Product] = relationship(foreign_keys=[take_product_id])
 
     is_accepted = mapped_column(Boolean, default=False)
